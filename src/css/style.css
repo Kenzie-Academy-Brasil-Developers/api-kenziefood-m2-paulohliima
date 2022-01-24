@@ -21,6 +21,7 @@
     --color-carrinho: #FF2253;
     --color-botao-pesquisa: #FFE9EE;
     --color-addcarrinho-verde: #4ACA94;
+    --color-background-addcarrinho: #E4F7EF;
     --color-categoria-todos: #F8F9FA;
     --color-categoria-panificadora: #FFF7F4;
     --color-categoria-frutas: #FFE4EA;
@@ -34,7 +35,6 @@
     --font-size-products-descricao: 12px;
     --font-size-products-categoria-card: 11.1176px;
     --font-size-categoria: 14px;
-    --font-size-paragraph: 16px;
     --font-size-carrinho: 16px;
     --font-size-input-pesquisa: 13.3333px;
     --font-size-carrinho-products-name: 14px;
@@ -42,15 +42,23 @@
     --font-size-carrinho-products-price: 12px;
     --font-size-carrinho-quantidade: 12px;
     --font-size-carrinho-total-price: 12px;
+    --font-size-h3-carrinho-vazio: 16px;
+    --font-size-p-carrinho-vazio: 12px;
 
     /* END font-size*/
 
     /* START font-color */
     --color-font-categoria: #212529;
-    --color-font-input-pesquisa: #868E96; /*mesma cor para mensagem de carrinho vazio*/
+    --color-font-input-pesquisa: #868E96; 
     --color-descricao-product: rgba(0,0,0,0.5);
     --color-name-product: #000000;
     --color-product-price: #212529;
+    --color-font-carrinho: #ffffff;
+    --color-h3-carrinho-vazio: #868E96;
+    --color-p-carrinho-vazio: #868E96;
+    --color-carrinho-product-name: #000000;
+    --color-carrinho-product-categoria: #868E96;
+    --color-carrinho-product-price: #212529;
     
     /* END font-color */
 
@@ -71,29 +79,73 @@
 /* END body */
 
 /* START header */
-header{}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 80px;
+}
 header img{}
+
 header form{}
-header form input{}
-header form button{}
+
+header form input{
+    font-size: var(--font-size-input-pesquisa);
+    color: var(--color-font-input-pesquisa);
+    font-family: "Inter";
+}
+header form button{
+    color: var(--color-botao-pesquisa);
+}
 header form button img{}
 
 /* END header */
 
 /* START main */
 
-main{}
+main{
+    display: flex;
+    font-family: "Poppins";
+    flex-wrap: wrap;
+}
 main section{}
-main section nav{}
-main section nav button{}
-#filterPanificadora{}
+
+main section nav{
+    display: flex;
+    justify-content: space-evenly;
+    width: 519px;
+    height: 40px;
+
+}
+
+main section nav button{
+   font-size: var(--font-size-carrinho);
+   color: var(--color-font-categoria);
+   font-family: "Inter";
+}
+
+#filterPanificadora{
+    background-color: var(--color-categoria-panificadora);
+}
+
 #filterPanificadora img{}
-#filterFrutas {}
+    
+#filterFrutas {
+    background-color: var(--color-categoria-frutas);
+}
 #filterFrutas img{}
-#filterBebidas{}
+
+#filterBebidas{
+    background-color: var(--color-categoria-bebidas);
+}
 #filterBebidas img{}
-main ul{}
-ul li{
+
+main ul{
+    width: 900px;
+}
+
+section ul li{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -101,35 +153,127 @@ ul li{
     height: 400px;
 }
 
-ul li img{}
-ul li .foodCategory{
+section ul li img{}
+
+section ul li .foodCategory{
+    font-size: var(--font-size-products-categoria-card);
     background-color: var(--color-botao-pesquisa);
+    max-width: 132.09px;
     height: 30px;
     position: relative;   
 }
-ul li span img{}
-ul li span h3{}
-ul li p{}
-ul li div{}
-ul li div .price{}
-ul li div .addCart{}
-.addCart img{}
 
-aside{}
+section ul li .foodCategory img{
+    width: 15.76px;
+    height: 16.75px;
+}
+
+section ul li h3{
+    font-size: var(--font-size-products-name);
+    color: var(--color-name-product);
+}
+
+section ul li p{
+    font-size: var(--font-size-products-descricao);
+    color: var(--color-descricao-product);
+}
+
+section ul li div{}
+
+section ul li div .price{
+    font-size: var(--font-size-products-price);
+    color: var(--color-product-price);
+    font-weight: bold;
+}
+
+section ul li div .addCart{
+    color: var(--color-addcarrinho-verde);
+    background-color: var(--color-background-addcarrinho);
+}
+
+.addCart img{
+    width: 11px;
+    height: 11px;
+}
+
+aside{
+    width: 319px;
+    height: 405px;
+}
+
 aside .cartTitle{
+    display: flex;
     background-color: #FF2253;
 }
-.cartTitle img{}
-.cartTitle h1{}
-aside .listCart{
-    background-color: #868E96;
+
+.cartTitle img{
+    margin-left: 10px;
+    margin-top: 10px;
+    max-height: 14px;
+    max-width: 14px;
 }
+
+.cartTitle h1{
+    margin: 10px;
+    font-size: var(--font-size-carrinho);
+    color: var(--color-font-carrinho);
+    font-weight: bold;
+}
+
+aside .listCart{
+    background-color: var(--color-categoria-todos);
+}
+
 aside .listCart .emptyCart{}
+
 aside .listCart .emptyCart img{}
-aside .listCart .emptyCart h3{}
-aside .listCart .emptyCart span{}
+
+aside .listCart .emptyCart h3{
+    font-size: var(--font-size-h3-carrinho-vazio);
+    color: var(--color-h3-carrinho-vazio);
+    font-weight: bold;
+}
+
+aside .listCart .emptyCart span{
+    font-size: var(--font-size-p-carrinho-vazio);
+    color: var(--color-p-carrinho-vazio);
+}
+
 aside .listCart ul{}
 
+aside .listCart ul li{
+    display: flex;
+}
+
+aside .listCart ul li img{
+    width: 70px;
+    height: 70px;
+}
+
+aside .listCart ul li h3{
+    font-size: var(--font-size-carrinho-products-name);
+    color: var(--color-carrinho-product-name);
+}
+
+aside .listCart ul li .categoria{
+    font-size: var(--font-size-carrinho-products-categoria);
+    color: var(--color-carrinho-product-categoria);
+}
+
+aside .listCart ul li .price{
+    font-size: var(--font-size-carrinho-products-price);
+    color: var(--color-carrinho-product-price);
+}
+
+aside .listCart ul li button{
+    width: 25px;
+    height: 25px;
+}
+
+aside .listCart ul li button img{
+    width: 9px;
+    height: 12px;
+}
 
 /* END main */
 

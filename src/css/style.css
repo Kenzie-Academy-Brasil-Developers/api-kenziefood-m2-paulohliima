@@ -74,6 +74,20 @@
 /* END header */
 
 /* START main */
+
+li{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    height: 400px;
+}
+
+.foodCategory {
+    background-color: var(--color-botao-pesquisa);
+    height: 30px;
+    position: relative;    
+}
 /* END main */
 
 /* START footer */

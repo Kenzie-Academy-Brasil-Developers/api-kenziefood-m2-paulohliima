@@ -71,11 +71,33 @@
 /* END body */
 
 /* START header */
+header{}
+header img{}
+header form{}
+header form input{}
+header form button{}
+header form button img{}
+
 /* END header */
 
 /* START main */
 
-li{
+main{}
+main section{}
+main section nav{}
+main section nav button{}
+#filterPanificadora{}
+#filterPanificadora img{}
+
+#filterFrutas {}
+#filterFrutas img{}
+
+#filterBebidas{}
+#filterBebidas img{}
+
+main ul{}
+
+ul li{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -83,11 +105,29 @@ li{
     height: 400px;
 }
 
-.foodCategory {
+ul li img{}
+ul li .foodCategory{
     background-color: var(--color-botao-pesquisa);
     height: 30px;
-    position: relative;    
+    position: relative;   
 }
+ul li span img{}
+ul li span h3{}
+ul li p{}
+ul li div{}
+ul li div .price{}
+ul li div .addCart{}
+.addCart img{}
+
+aside{}
+aside .cartTitle{}
+.cartTitle img{}
+.cartTitle h1{}
+.emptyCart{}
+.emptyCart img{}
+.emptyCart h3{}
+.emptyCart span{}
+
 /* END main */
 
 /* START footer */

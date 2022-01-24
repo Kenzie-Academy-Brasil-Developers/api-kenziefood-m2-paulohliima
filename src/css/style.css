@@ -1,0 +1,100 @@
+/* START imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+/*
+    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
+*/
+
+/* END imports */
+
+/* START roots */
+:root {
+    /* START background & Details */
+    --color-background-addcarrinho: #E4F7EF;
+    --color-background-carrinho: #F8F9FA;
+    --color-background-body: #F5F5F5;
+
+    /* END background & Details */
+
+    /* START color Primary*/
+    --color-carrinho: #FF2253;
+    --color-botao-pesquisa: #FFE9EE;
+    --color-addcarrinho-verde: #4ACA94;
+    --color-categoria-todos: #F8F9FA;
+    --color-categoria-panificadora: #FFF7F4;
+    --color-categoria-frutas: #FFE4EA;
+    --color-categoria-bebidas: #F3EEF5;
+
+    /* END color Primary*/
+
+    /* START font-size */
+    --font-size-products-name: 16px;
+    --font-size-products-price: 12px;
+    --font-size-products-descricao: 12px;
+    --font-size-products-categoria-card: 11.1176px;
+    --font-size-categoria: 14px;
+    --font-size-paragraph: 16px;
+    --font-size-carrinho: 16px;
+    --font-size-input-pesquisa: 13.3333px;
+    --font-size-carrinho-products-name: 14px;
+    --font-size-carrinho-products-categoria: 10px;
+    --font-size-carrinho-products-price: 12px;
+    --font-size-carrinho-quantidade: 12px;
+    --font-size-carrinho-total-price: 12px;
+
+    /* END font-size*/
+
+    /* START font-color */
+    --color-font-categoria: #212529;
+    --color-font-input-pesquisa: #868E96; /*mesma cor para mensagem de carrinho vazio*/
+    --color-descricao-product: rgba(0,0,0,0.5);
+    --color-name-product: #000000;
+    --color-product-price: #212529;
+    
+    /* END font-color */
+
+    /* START color-effects hover*/
+    --color-effect-green: #4ACA94;
+    --color-effect-white: #F8F9FA;
+    --color-effect-red: #FF2253;
+
+    /* END color-effects hover*/
+}
+
+/* END roots */
+
+/* START general */
+/* END general */
+
+/* START body */
+/* END body */
+
+/* START header */
+/* END header */
+
+/* START main */
+
+li{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    height: 400px;
+}
+
+.foodCategory {
+    background-color: var(--color-botao-pesquisa);
+    height: 30px;
+    position: relative;    
+}
+/* END main */
+
+/* START footer */
+/* END footer */
+
+/* START extras */
+/* END extras */
+
+/* START media queries */
+/* END media queries */

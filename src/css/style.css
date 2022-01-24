@@ -88,15 +88,11 @@ main section nav{}
 main section nav button{}
 #filterPanificadora{}
 #filterPanificadora img{}
-
 #filterFrutas {}
 #filterFrutas img{}
-
 #filterBebidas{}
 #filterBebidas img{}
-
 main ul{}
-
 ul li{
     display: flex;
     flex-direction: column;
@@ -120,13 +116,20 @@ ul li div .addCart{}
 .addCart img{}
 
 aside{}
-aside .cartTitle{}
+aside .cartTitle{
+    background-color: #FF2253;
+}
 .cartTitle img{}
 .cartTitle h1{}
-.emptyCart{}
-.emptyCart img{}
-.emptyCart h3{}
-.emptyCart span{}
+aside .listCart{
+    background-color: #868E96;
+}
+aside .listCart .emptyCart{}
+aside .listCart .emptyCart img{}
+aside .listCart .emptyCart h3{}
+aside .listCart .emptyCart span{}
+aside .listCart ul{}
+
 
 /* END main */
 

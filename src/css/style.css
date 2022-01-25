@@ -466,6 +466,22 @@ aside .totalAmount{
         width:  33.33%;
     }
     
+    main ul {
+        overflow: hidden;
+    }
+
+    main section nav {
+        overflow: hidden;
+    }
+
+    aside {
+        overflow-x: hidden;
+    }
+
+    #vitrineCarrinho{
+        overflow: hidden;
+    }
+    
     
 }
 /* END media queries */

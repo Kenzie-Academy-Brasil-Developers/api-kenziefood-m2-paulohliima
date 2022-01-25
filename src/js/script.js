@@ -3,11 +3,16 @@ const vitrineProdutos = document.querySelector("#vitrineProdutos");
 const vitrineCarrinho = document.querySelector("#vitrineCarrinho");
 const buttonCategorias = document.querySelectorAll("#buttonCategoria");
 const inputPesquisa = document.querySelector("input");
-const carrinhoVazio = document.querySelector(".emptyCart");
+const carrinhoVazio = document.querySelector("#cartProducts");
+const carrinhoVazioAmount = document.querySelector("#productAmount")
+const carrinhoVazioTotal = document.querySelector("#totalAmount")
 const spanProductAmount = document.querySelector(".productAcumulator");
 const spanPrice = document.querySelector(".totalPrice");
+
 let addedProducts = [];
+let productPrices = [];
 let productAcumulator = 0;
+let productTotal = 0;
 
 
 const apiURL = "https://kenzie-food-api.herokuapp.com/product"
@@ -35,6 +40,7 @@ class RequistionAPI {
     }
 
 }
+
 let productsObjArr = await RequistionAPI.RequisitionData()
 
 class TemplatesVitrines {
@@ -84,6 +90,15 @@ class TemplatesVitrines {
 
     }
 
+    static PriceTotal(product) {
+        let price = ''
+        for (let i = 3; i < product.length - 1; i++) {
+            price += product[i];
+        }
+        console.log(price)
+        return productPrices.push(Number(price));
+    }
+
     static addProduct(event) {
 
         let clickedButton = event.target.closest('li');
@@ -101,7 +116,7 @@ class TemplatesVitrines {
             <div>
                 <h3>${productName.innerText}</h3>
                 <span class="categoria">${productCategory.innerText}</span>
-                <span class="price">R$ ${productPrice.innerText}</span>
+                <span class="price">${productPrice.innerText}</span>
             </div>
             <button class="removeCart">
                 <img src="./src/icons/icon-trash.png" alt="Icone RemoveCart">
@@ -111,28 +126,41 @@ class TemplatesVitrines {
         vitrineCarrinho.appendChild(li);
         addedProducts.push(li);
         productAcumulator++
-        carrinhoVazio.className = "emptyCartNone";
-        spanProductAmount.innerText = productAcumulator
+        TemplatesVitrines.PriceTotal(productPrice.innerText)
+        console.log(productPrices)
+
+        const TotalPrice = productPrices.reduce((previousValue, CurrentValue) => {
+            return previousValue + CurrentValue;
+        });
+        spanPrice.innerText = TotalPrice;
+        carrinhoVazio.className = "emptyCart";
+        carrinhoVazioAmount.className = "productAmount";
+        carrinhoVazioTotal.className = "totalAmount";
+        spanProductAmount.innerText = productAcumulator;
+
 
         const buttonRemove = document.querySelectorAll('.removeCart');
-
+        console.log(buttonRemove[addedProducts.length - 1])
         buttonRemove[addedProducts.length - 1].addEventListener('click', (event) => {
-
             let clickedButton = event.target.closest('li');
             addedProducts.splice(clickedButton, 1);
-
-            productAcumulator--;
-
-            spanProductAmount.innerText = productAcumulator;
-            if(productAcumulator === 0){
-                
+            productPrices.splice(addedProducts.indexOf(clickedButton), 1);
+            if (productPrices.length < 0) {
+                const TotalPrice = productPrices.reduce((previousValue, CurrentValue) => {
+                    return previousValue + CurrentValue;
+                });
             }
-
+            spanPrice.innerText = TotalPrice
+            productAcumulator--;
+            spanProductAmount.innerText = productAcumulator;
+            if (productAcumulator === 0) {
+                carrinhoVazio.className = "emptyCartNone";
+                carrinhoVazioAmount.className = "emptyCart";
+                carrinhoVazioTotal.className = "emptyCart";
+            }
             vitrineCarrinho.removeChild(clickedButton);
         });
-
     }
-
 }
 
 class FilterProducts {

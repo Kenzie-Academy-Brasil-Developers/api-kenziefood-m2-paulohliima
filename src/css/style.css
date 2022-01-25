@@ -88,16 +88,28 @@ header{
 }
 header img{}
 
-header form{}
+header form{
+    margin-right: 115px;
+}
 
 header form input{
+    width: 311px;
+    height: 49px;
     font-size: var(--font-size-input-pesquisa);
     color: var(--color-font-input-pesquisa);
     font-family: "Inter";
+    border: none;
+    box-sizing: border-box;
+    border-radius: 30px;
 }
 header form button{
-    color: var(--color-botao-pesquisa);
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: var(--color-botao-pesquisa);
+    border: none;
 }
+
 header form button img{}
 
 /* END header */
@@ -108,6 +120,7 @@ main{
     display: flex;
     font-family: "Poppins";
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 main section{}
 
@@ -123,26 +136,34 @@ main section nav button{
    font-size: var(--font-size-carrinho);
    color: var(--color-font-categoria);
    font-family: "Inter";
+   box-sizing: border-box; 
+   border-radius: 30px;
 }
 
-#filterPanificadora{
+.filterPanificadora{
     background-color: var(--color-categoria-panificadora);
+    border: none;
 }
 
-#filterPanificadora img{}
+.filterPanificadora img{}
     
-#filterFrutas {
+.filterFrutas {
     background-color: var(--color-categoria-frutas);
+    border: none;
 }
-#filterFrutas img{}
+.filterFrutas img{}
 
-#filterBebidas{
+.filterBebidas{
     background-color: var(--color-categoria-bebidas);
+    border: none;
 }
-#filterBebidas img{}
+.filterBebidas img{}
 
 main ul{
     width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 section ul li{
@@ -160,7 +181,8 @@ section ul li .foodCategory{
     background-color: var(--color-botao-pesquisa);
     max-width: 132.09px;
     height: 30px;
-    position: relative;   
+    position: relative; 
+    border-radius: 30px;  
 }
 
 section ul li .foodCategory img{
@@ -187,8 +209,12 @@ section ul li div .price{
 }
 
 section ul li div .addCart{
+    width: 30px;
+    height: 30px;
     color: var(--color-addcarrinho-verde);
     background-color: var(--color-background-addcarrinho);
+    border-radius: 30px;
+    border: 1.5px solid #F3EEF5;
 }
 
 .addCart img{
@@ -202,8 +228,12 @@ aside{
 }
 
 aside .cartTitle{
+    width: 320px;
+    height: 56px;
     display: flex;
+    align-items: center;
     background-color: #FF2253;
+    border-radius: 14px 14px 0px 0px;
 }
 
 .cartTitle img{
@@ -224,7 +254,8 @@ aside .listCart{
     background-color: var(--color-categoria-todos);
 }
 
-aside .listCart .emptyCart{}
+aside .listCart .emptyCart{
+}
 
 aside .listCart .emptyCartNone{
     display: none;
@@ -243,10 +274,19 @@ aside .listCart .emptyCart span{
     color: var(--color-p-carrinho-vazio);
 }
 
-aside .listCart ul{}
+aside .listCart ul{
+    display: flex;
+    flex-direction: column;
+}
 
 aside .listCart ul li{
     display: flex;
+}
+
+aside .listCart ul li div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 aside .listCart ul li img{

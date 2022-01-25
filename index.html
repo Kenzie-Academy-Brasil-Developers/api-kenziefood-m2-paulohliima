@@ -54,31 +54,7 @@
 
             </nav>
 
-            <ul id="vitrineProdutos">
-                <!-- <li>
-                    <img src="./src/icons/Frame 5.png" alt="Imagem de teste">
-                    <span class="foodCategory">
-                        <img src="./src/icons/icon-Panificadora.png" alt="Icone Panificadora">
-                        Panificadora
-
-                    </span>
-
-                    <h3>Panqueca de banana com aveia</h3>
-
-                    <p>
-                        Esta receita serve muito bem 2 pessoas, deixa a gente bem satisfeito, se não tiver outra opção
-                        de café. Se tiver mais comida, como pães e frutas.
-                    </p>
-                    <div>
-                        <span class="price">R$ 20,00</span>
-
-                        <button class="addCart">
-                            <img src="./src/icons/icon-addcarrinho.png" alt="Icone addCart">
-
-                        </button>
-                    </div>
-                </li> -->
-            </ul>
+            <ul id="vitrineProdutos"></ul>
 
         </section>
         <aside>
@@ -90,7 +66,7 @@
 
             </div>
 
-            <div class="listCart">
+            <div class="listCart" id="listCart">
                 <div class="emptyCartNone" id="cartProducts">
                    
                     <img src="./src/icons/icon-bag.png" alt="Icone de sacola">
@@ -99,37 +75,23 @@
 
                 </div>
 
-                <ul id="vitrineCarrinho">
-                    <!-- <li>
-
-                        <img src="./src/icons/carrinho-imgTeste.png" alt="Img CarrinhoTeste">
-                        <div>
-                            <h3>Panqueca</h3>
-                            <span class="categoria">Panificadora</span>
-                            <span class="price">R$ 20,00</span>
-                        </div>
-                        <button>
-                            <img src="./src/icons/icon-trash.png" alt="Icone RemoveCart">
-                        </button>
-                   
-                    </li> -->
-
-                </ul>
-                <div class="emptyCart" id="productAmount">
-
-                    <h4>Quantidade</h4>
-                    <span class="productAcumulator"></span>
-
-                </div>
-
-                <div class="emptyCart" id="totalAmount">
-
-                    <h4>Total</h4>
-                    <span class="totalPrice"></span>
-
-                </div>
+                <ul id="vitrineCarrinho"></ul>
             </div>
         </aside>
+
+        <div class="emptyCart" id="productAmount">
+
+            <h4>Quantidade: </h4>
+            <span class="productAcumulator"></span>
+
+        </div>
+
+        <div class="emptyCart" id="totalAmount">
+
+            <h4>Total: </h4>
+            <span class="totalPrice"></span>
+
+        </div>
     </main>
 
     <script src="./src/js/script.js" type="module"></script>

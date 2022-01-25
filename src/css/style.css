@@ -76,31 +76,48 @@
 /* END general */
 
 /* START body */
+body{
+    overflow-x: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 /* END body */
 
 /* START header */
 header{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    height: 80px;
+    flex-direction: column;
+    height: 140px;
+    padding-top: 10px;
+    padding-right: 10px;
+    width: 100%;
 }
-header img{}
+header img{
+    width: 150px;
+}
 
 header form{
-    margin-right: 115px;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-categoria-todos);
+    border-radius: 25px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 header form input{
-    width: 311px;
-    height: 49px;
-    font-size: var(--font-size-input-pesquisa);
+    width: 80%;
+    height: 50px;
+    padding-left: 15px;
+    font-size: var(--font-size-categoria);
     color: var(--color-font-input-pesquisa);
+    background-color: var(--color-categoria-todos);
+    font-weight: 400;
     font-family: "Inter";
     border: none;
-    box-sizing: border-box;
     border-radius: 30px;
+    cursor: pointer;
 }
 header form button{
     width: 40px;
@@ -110,7 +127,10 @@ header form button{
     border: none;
 }
 
-header form button img{}
+header form button img{
+    width: 12px;
+    height: 12px;
+}
 
 /* END header */
 
@@ -118,18 +138,20 @@ header form button img{}
 
 main{
     display: flex;
+    flex-direction: column;
     font-family: "Poppins";
-    flex-wrap: wrap;
     justify-content: space-evenly;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--color-font-carrinho)
 }
-main section{}
+
 
 main section nav{
     display: flex;
-    justify-content: space-evenly;
-    width: 519px;
     height: 40px;
-
+    overflow-x: scroll;
+    margin-bottom: 28px;
 }
 
 main section nav button{
@@ -138,56 +160,81 @@ main section nav button{
    font-family: "Inter";
    box-sizing: border-box; 
    border-radius: 30px;
+   margin-right: 22px;
 }
 
 .filterPanificadora{
+    display: flex;
+    align-items: center;
     background-color: var(--color-categoria-panificadora);
     border: none;
+    padding: 12px 15px;
 }
 
-.filterPanificadora img{}
+.filterPanificadora img{
+    margin-right: 15px;
+}
     
 .filterFrutas {
+    display: flex;
+    align-items: center;
     background-color: var(--color-categoria-frutas);
     border: none;
+    padding: 12px 15px;
 }
-.filterFrutas img{}
+.filterFrutas img{
+    margin-right: 15px;
+}
 
 .filterBebidas{
+    display: flex;
+    align-items: center;
     background-color: var(--color-categoria-bebidas);
     border: none;
+    padding: 12px 15px;
 }
-.filterBebidas img{}
+.filterBebidas img{
+    margin-right: 15px;
+}
 
 main ul{
-    width: 900px;
+    width: 300px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    overflow-x: scroll;
 }
 
 section ul li{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 300px;
+    justify-content: space-evenly;
+    width: 100%;
     height: 400px;
 }
 
-section ul li img{}
+section ul li img{
+    border: 2px solid var(--color-botao-pesquisa);
+    border-radius: 15px;
+}
 
 section ul li .foodCategory{
     font-size: var(--font-size-products-categoria-card);
     background-color: var(--color-botao-pesquisa);
-    max-width: 132.09px;
     height: 30px;
     position: relative; 
     border-radius: 30px;  
+    bottom: 8%;
+    margin-left: 12px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: max-content;
+    padding: 0 15px;
 }
 
 section ul li .foodCategory img{
-    width: 15.76px;
-    height: 16.75px;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
 }
 
 section ul li h3{
@@ -200,7 +247,11 @@ section ul li p{
     color: var(--color-descricao-product);
 }
 
-section ul li div{}
+section ul li div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 section ul li div .price{
     font-size: var(--font-size-products-price);
@@ -223,28 +274,22 @@ section ul li div .addCart{
 }
 
 aside{
-    width: 319px;
+    width: 300px;
     height: 405px;
+    overflow-y: scroll;
 }
 
 aside .cartTitle{
-    width: 320px;
-    height: 56px;
+    height: 55px;
     display: flex;
     align-items: center;
     background-color: #FF2253;
     border-radius: 14px 14px 0px 0px;
-}
-
-.cartTitle img{
-    margin-left: 10px;
-    margin-top: 10px;
-    max-height: 14px;
-    max-width: 14px;
+    padding-left: 25px;
 }
 
 .cartTitle h1{
-    margin: 10px;
+    margin-left: 10px;
     font-size: var(--font-size-carrinho);
     color: var(--color-font-carrinho);
     font-weight: bold;
@@ -252,85 +297,123 @@ aside .cartTitle{
 
 aside .listCart{
     background-color: var(--color-categoria-todos);
+    height: 100%;
+}
+.listCartActive{
+    background-color: var(--color-font-carrinho);
 }
 
-aside .listCart .emptyCart{
+.emptyCart{
     display: none;
 }
 
 aside .listCart .emptyCartNone{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    padding: 0px 60px;
 }
 
-aside .listCart .emptyCart img{}
+aside .listCart .emptyCartNone img{
+    width: 50px;
+    height: 50px;
+}
 
-aside .listCart .emptyCart h3{
+aside .listCart .emptyCartNone h3{
     font-size: var(--font-size-h3-carrinho-vazio);
     color: var(--color-h3-carrinho-vazio);
     font-weight: bold;
 }
 
-aside .listCart .emptyCart span{
+aside .listCart .emptyCartNone span{
     font-size: var(--font-size-p-carrinho-vazio);
     color: var(--color-p-carrinho-vazio);
 }
+#vitrineCarrinho{
+    overflow-y: scroll;
+}
 
-aside .listCart ul{
+aside .listCartActive ul{
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    width: 280px;
 }
 
-aside .listCart ul li{
+aside .listCartActive ul li{
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 15px 0;
 }
 
-aside .listCart ul li div{
+aside .listCartActive ul li div{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    width: 180px;
+    margin-left: 5px;
 }
 
-aside .listCart ul li img{
+aside .listCartActive ul li img{
     width: 70px;
     height: 70px;
+    border-radius: 10px;
 }
 
-aside .listCart ul li h3{
+aside .listCartActive ul li h3{
     font-size: var(--font-size-carrinho-products-name);
     color: var(--color-carrinho-product-name);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 80%;
+    font-weight: bold;
 }
 
-aside .listCart ul li .categoria{
+aside .listCartActive ul li .categoria{
     font-size: var(--font-size-carrinho-products-categoria);
     color: var(--color-carrinho-product-categoria);
+    width: max-content;
 }
 
-aside .listCart ul li .price{
+aside .listCartActive ul li .price{
     font-size: var(--font-size-carrinho-products-price);
     color: var(--color-carrinho-product-price);
+    width: max-content;
 }
 
-aside .listCart ul li button{
+aside .listCartActive ul li button{
     width: 25px;
     height: 25px;
+    border: none;
+    border-radius: 5px;
 }
 
-aside .listCart ul li button img{
+aside .listCartActive ul li button img{
     width: 9px;
     height: 12px;
 }
 
-aside .listCart .productAmount{
+.productAmount{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--color-categoria-todos);
     height: 58px;
+    padding: 0 10px;
 }
 
-aside .listCart .totalAmount{
+.totalAmount{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--color-font-carrinho);
     height: 58px;
+    padding: 0 10px;
 }
 /* END main */
 

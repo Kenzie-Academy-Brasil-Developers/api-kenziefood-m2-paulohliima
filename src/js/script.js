@@ -8,6 +8,7 @@ const carrinhoVazioAmount = document.querySelector("#productAmount")
 const carrinhoVazioTotal = document.querySelector("#totalAmount")
 const spanProductAmount = document.querySelector(".productAcumulator");
 const spanPrice = document.querySelector(".totalPrice");
+const listCart = document.querySelector("#listCart")
 
 let addedProducts = [];
 let productPrices = [];
@@ -136,6 +137,7 @@ class TemplatesVitrines {
         carrinhoVazio.className = "emptyCart";
         carrinhoVazioAmount.className = "productAmount";
         carrinhoVazioTotal.className = "totalAmount";
+        listCart.className = "listCartActive"
         spanProductAmount.innerText = productAcumulator;
 
 
@@ -157,6 +159,7 @@ class TemplatesVitrines {
                 carrinhoVazio.className = "emptyCartNone";
                 carrinhoVazioAmount.className = "emptyCart";
                 carrinhoVazioTotal.className = "emptyCart";
+                listCart.className = "listCart";
             }
             vitrineCarrinho.removeChild(clickedButton);
         });

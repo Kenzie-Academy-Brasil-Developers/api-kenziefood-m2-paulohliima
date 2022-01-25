@@ -1,8 +1,13 @@
 //START global-variables
-const vitrineProdutos = document.querySelector("#vitrineProdutos")
-const vitrineCarrinho = document.querySelector("#vitrineCarrinho")
-const buttonCategorias = document.querySelectorAll("#buttonCategoria")
+const vitrineProdutos = document.querySelector("#vitrineProdutos");
+const vitrineCarrinho = document.querySelector("#vitrineCarrinho");
+const buttonCategorias = document.querySelectorAll("#buttonCategoria");
 const inputPesquisa = document.querySelector("input");
+const carrinhoVazio = document.querySelector(".emptyCart");
+const spanProductAmount = document.querySelector(".productAcumulator");
+const spanPrice = document.querySelector(".totalPrice");
+let addedProducts = [];
+let productAcumulator = 0;
 
 
 const apiURL = "https://kenzie-food-api.herokuapp.com/product"
@@ -17,23 +22,34 @@ const apiURL = "https://kenzie-food-api.herokuapp.com/product"
 //START dynamic-content-main
 
 // 
-class RequistionAPI{
-    static async RequisitionData(){
-        const response = await fetch (apiURL)
+
+
+class RequistionAPI {
+
+    static async RequisitionData() {
+
+        const response = await fetch(apiURL)
         const data = await response.json()
-        console.log(data)
+
         return data;
     }
+
 }
 let productsObjArr = await RequistionAPI.RequisitionData()
 
-class TemplatesVitrines{
-    static vitrineProdutos(array){
+class TemplatesVitrines {
+
+    static vitrineProdutos(array) {
+
         vitrineProdutos.innerHTML = ""
+
         array.forEach((element) => {
+
             const li = document.createElement("li")
-            li.innerHTML = 
-            `<img src=${element.imagem} alt="${element.nome}">
+
+            li.innerHTML =
+
+                `<img src=${element.imagem} alt=${element.nome}>
             <span class="foodCategory">
                 <img src="./src/icons/icon-${element.categoria}.png" alt="Icone ${element.categoria}">
                 ${element.categoria}
@@ -53,52 +69,125 @@ class TemplatesVitrines{
 
                 </button>
             </div>`
-        vitrineProdutos.appendChild(li)
+
+            vitrineProdutos.appendChild(li)
+
+        });
+
+        for (let i = 0; i < productsObjArr.length; i++) {
+
+            const buttonAdd = document.querySelectorAll('.addCart')
+
+            buttonAdd[i].addEventListener('click', this.addProduct)
+
+        }
+
+    }
+
+    static addProduct(event) {
+
+        let clickedButton = event.target.closest('li');
+
+        let imgSrc = clickedButton.children[0].src;
+        let productName = clickedButton.children[2];
+        let productCategory = clickedButton.children[1];
+        let productPrice = clickedButton.children[4];
+
+        const li = document.createElement("li");
+
+        li.innerHTML =
+
+            `<img src=${imgSrc} alt="${productName.innerText}">
+            <div>
+                <h3>${productName.innerText}</h3>
+                <span class="categoria">${productCategory.innerText}</span>
+                <span class="price">R$ ${productPrice.innerText}</span>
+            </div>
+            <button class="removeCart">
+                <img src="./src/icons/icon-trash.png" alt="Icone RemoveCart">
+            </button>
+            `
+
+        vitrineCarrinho.appendChild(li);
+        addedProducts.push(li);
+        productAcumulator++
+        carrinhoVazio.className = "emptyCartNone";
+        spanProductAmount.innerText = productAcumulator
+
+        const buttonRemove = document.querySelectorAll('.removeCart');
+
+        buttonRemove[addedProducts.length - 1].addEventListener('click', (event) => {
+
+            let clickedButton = event.target.closest('li');
+            addedProducts.splice(clickedButton, 1);
+
+            productAcumulator--;
+
+            spanProductAmount.innerText = productAcumulator;
+            if(productAcumulator === 0){
+                
+            }
+
+            vitrineCarrinho.removeChild(clickedButton);
         });
 
     }
+
 }
 
-class FilterProducts{
+class FilterProducts {
 
-    static ValidacaoCategorias(button){
-        switch(button.target.className){
+    static ValidacaoCategorias(button) {
+        switch (button.target.className) {
+
             case "filterTodos":
                 return TemplatesVitrines.vitrineProdutos(productsObjArr);
                 break;
+
             case "filterPanificadora":
-                const ListaPanificadora = productsObjArr.filter(element =>{
+                const ListaPanificadora = productsObjArr.filter(element => {
                     return element.categoria === "Panificadora";
                 });
                 return TemplatesVitrines.vitrineProdutos(ListaPanificadora);
                 break;
+
             case "filterFrutas":
                 const ListaFrutas = productsObjArr.filter(element => {
                     return element.categoria === "Frutas";
-                })
+                });
                 return TemplatesVitrines.vitrineProdutos(ListaFrutas);
                 break;
+
             case "filterBebidas":
                 const ListaBebidas = productsObjArr.filter(element => {
                     return element.categoria === "Bebidas";
                 });
+
                 return TemplatesVitrines.vitrineProdutos(ListaBebidas);
                 break;
+
         }
     }
-    static FilterCategorias(){
+    static FilterCategorias() {
+
         buttonCategorias.forEach((element) => {
             element.addEventListener("click", this.ValidacaoCategorias)
         });
+
     }
 
-    static FilterInput(){
-        inputPesquisa.addEventListener("keyup", ()=>{
+    static FilterInput() {
+
+        inputPesquisa.addEventListener("keyup", () => {
+
             const valueInput = document.querySelector("input").value
-            const ProdutosPesquisados = productsObjArr.filter(element =>{
+            const ProdutosPesquisados = productsObjArr.filter(element => {
+
                 return element.nome.toLowerCase().includes(valueInput.toLowerCase());
+
             });
-            console.log(ProdutosPesquisados)
+
+
             return TemplatesVitrines.vitrineProdutos(ProdutosPesquisados);
         });
     };

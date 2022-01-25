@@ -398,20 +398,22 @@ aside .listCartActive ul li button img{
     height: 12px;
 }
 
-.productAmount{
+aside .productAmount{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--color-categoria-todos);
+    font-weight: bold;
     height: 58px;
     padding: 0 10px;
 }
 
-.totalAmount{
+aside .totalAmount{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--color-font-carrinho);
+    font-weight: bold;
     height: 58px;
     padding: 0 10px;
 }
@@ -424,4 +426,46 @@ aside .listCartActive ul li button img{
 /* END extras */
 
 /* START media queries */
+@media screen and (min-width: 768px){
+    header{
+        flex-direction: row;
+        justify-content: space-between;
+    } 
+
+    header form {
+        width: 30%;
+        height: 49px;
+    }
+
+    header img{
+        height: 50px;
+        margin: 0 0;
+        margin: 6px 15px;
+    }
+    
+    header form button img {
+        margin: 0 auto;
+    }
+
+    section {
+        width: 60%;
+    }
+
+    main {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    main ul {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    section ul li {
+        width:  33.33%;
+    }
+    
+    
+}
 /* END media queries */

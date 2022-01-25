@@ -93,7 +93,7 @@ class TemplatesVitrines {
 
     static PriceTotal(product) {
         let price = ''
-        for (let i = 3; i < product.length - 1; i++) {
+        for (let i = 3; i < product.length; i++) {
             price += product[i];
         }
         console.log(price)
@@ -152,7 +152,7 @@ class TemplatesVitrines {
                     return previousValue + CurrentValue;
                 });
             }
-            spanPrice.innerText = TotalPrice
+            spanPrice.innerText = TotalPrice;
             productAcumulator--;
             spanProductAmount.innerText = productAcumulator;
             if (productAcumulator === 0) {

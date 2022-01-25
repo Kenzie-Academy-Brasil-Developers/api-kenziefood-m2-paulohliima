@@ -226,6 +226,10 @@ aside .listCart{
 
 aside .listCart .emptyCart{}
 
+aside .listCart .emptyCartNone{
+    display: none;
+}
+
 aside .listCart .emptyCart img{}
 
 aside .listCart .emptyCart h3{
@@ -275,6 +279,17 @@ aside .listCart ul li button img{
     height: 12px;
 }
 
+aside .listCart .productAmount{
+    display: flex;
+    background-color: var(--color-categoria-todos);
+    height: 58px;
+}
+
+aside .listCart .totalAmout{
+    display: flex;
+    background-color: var(--color-font-carrinho);
+    height: 58px;
+}
 /* END main */
 
 /* START footer */

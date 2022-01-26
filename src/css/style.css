@@ -66,6 +66,7 @@
     --color-effect-green: #4ACA94;
     --color-effect-white: #F8F9FA;
     --color-effect-red: #FF2253;
+    --color-effect-blue: #1228ea;
 
     /* END color-effects hover*/
 }
@@ -368,6 +369,7 @@ aside{
     height: 405px;
     overflow-y: scroll;
     margin: 0 auto;
+    margin-bottom: 50px;
 }
 
 aside .cartTitle{
@@ -507,6 +509,31 @@ aside .totalAmount{
     font-weight: bold;
     height: 58px;
     padding: 0 10px;
+}
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80px;
+    background-color: var(--color-categoria-todos);
+    padding-left: 100px;
+}
+.adminProdutos{
+    font-weight: 300;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.adminGreen:hover{
+    font-weight: 600;
+    color: var(--color-addcarrinho-verde);
+}
+.adminYellow:hover{
+    font-weight: 600;
+    color: var(--color-effect-blue);
+}
+.adminRed:hover{
+    font-weight: 600;
+    color: var(--color-effect-red);
 }
 /* END main */
 

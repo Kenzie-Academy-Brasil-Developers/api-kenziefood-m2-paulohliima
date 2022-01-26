@@ -1,4 +1,4 @@
-export { NewProduct } from "../model/ProductModel"
+import { NewProduct } from "../model/ProductModel.js"
 
 class RequistionAPI {
 
@@ -11,7 +11,7 @@ class RequistionAPI {
         return data;
     }
 
-    async static PostRequisition() {
+    static async  PostRequisition() {
 
         const apiURL = "https://kenzie-food-api.herokuapp.com/my/product"
 

@@ -74,7 +74,7 @@ class TemplatesVitrines {
                 <span class="price">R$ ${element.preco}</span>
 
                 <button class="addCart">
-                    <img src="./src/icons/icon-addcarrinho.png" alt="Icone addCart">
+                    
 
                 </button>
             </div>`

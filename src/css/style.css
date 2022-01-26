@@ -174,6 +174,10 @@ main section nav button{
 .filterPanificadora img{
     margin-right: 15px;
 }
+
+.filterPanificadora:hover{
+    border: 1px solid black;
+}
     
 .filterFrutas {
     display: flex;
@@ -182,6 +186,11 @@ main section nav button{
     border: none;
     padding: 12px 15px;
 }
+
+.filterFrutas:hover{
+    border: 1px solid black;
+}
+
 .filterFrutas img{
     margin-right: 15px;
 }
@@ -195,6 +204,10 @@ main section nav button{
 }
 .filterBebidas img{
     margin-right: 15px;
+}
+
+.filterBebidas:hover{
+    border: 1px solid black; 
 }
 
 main ul{
@@ -230,6 +243,8 @@ section ul li .foodCategory{
     width: max-content;
     padding: 0 15px;
 }
+
+
 
 section ul li .foodCategory img{
     width: 16px;
@@ -269,8 +284,20 @@ section ul li div .addCart{
 }
 
 .addCart img{
+    border: none;
     width: 11px;
     height: 11px;
+}
+
+.addCart img:hover{
+    
+    content: url("../icons/icon-carrinho.png");
+}
+
+.addCart:hover{
+
+    background: var(--color-addcarrinho-verde);
+
 }
 
 aside{

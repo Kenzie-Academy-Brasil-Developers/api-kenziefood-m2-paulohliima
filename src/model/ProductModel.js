@@ -1,7 +1,7 @@
 
 
 class NewProduct{
-    
+
     constructor(nome = "", preco = 0, categoria = "", imagem = "", descrição){
 
         this.nome = nome

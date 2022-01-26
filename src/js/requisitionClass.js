@@ -11,7 +11,7 @@ class RequistionAPI {
         return data;
     }
 
-    async static PostRequisition() {
+    static async PostRequisition() {
 
         const apiURL = "https://kenzie-food-api.herokuapp.com/my/product"
 

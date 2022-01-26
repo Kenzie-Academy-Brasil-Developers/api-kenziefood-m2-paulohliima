@@ -77,59 +77,85 @@
 
 /* START body */
 body{
+
     overflow-x: hidden;
     padding-left: 10px;
     padding-right: 10px;
+
 }
 /* END body */
 
 /* START header */
 header{
+
     display: flex;
     flex-direction: column;
     height: 140px;
     padding-top: 10px;
     padding-right: 10px;
     width: 100%;
+
 }
 header img{
     width: 150px;
 }
 
 header form{
+
     display: flex;
     align-items: center;
-    background-color: var(--color-categoria-todos);
     border-radius: 25px;
     width: 100%;
     margin-top: 15px;
     margin-bottom: 15px;
+
 }
 
 header form input{
-    width: 80%;
+
+    width: 70%;
     height: 50px;
     padding-left: 15px;
     font-size: var(--font-size-categoria);
     color: var(--color-font-input-pesquisa);
-    background-color: var(--color-categoria-todos);
+    background-color: var(--color-categoria-todos);    
     font-weight: 400;
     font-family: "Inter";
     border: none;
     border-radius: 30px;
     cursor: pointer;
+
 }
+header form :hover{
+    border: 1px solid black;
+}
+
 header form button{
+    background-image: url("../icons/icon-search.png");
+    background-size: 11px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    right: 10%;
     width: 40px;
     height: 40px;
     border-radius: 30px;
     background-color: var(--color-botao-pesquisa);
     border: none;
+
+}
+
+header form button:hover{
+    border: none;
+    background-image: url("../icons/icons-searchWhite.png");
+    background-color: var(--color-effect-red);
 }
 
 header form button img{
+
     width: 12px;
     height: 12px;
+
 }
 
 /* END header */
@@ -137,38 +163,59 @@ header form button img{
 /* START main */
 
 main{
+
     display: flex;
     flex-direction: column;
     font-family: "Poppins";
     justify-content: space-evenly;
     width: 100%;
     overflow: hidden;
-    background-color: var(--color-font-carrinho)
+    background-color: var(--color-font-carrinho);
+
 }
 
-
 main section nav{
+
     display: flex;
     height: 40px;
     overflow-x: scroll;
     margin-bottom: 28px;
+
 }
 
 main section nav button{
+
    font-size: var(--font-size-carrinho);
    color: var(--color-font-categoria);
    font-family: "Inter";
    box-sizing: border-box; 
    border-radius: 30px;
+   border: none;
    margin-right: 22px;
+   padding: 0 15px;
+
+}
+
+.filterTodos:hover{
+
+    border: 1px solid black;
+
+}
+
+.filterTodos:focus{
+
+    border: 1px solid black;
+
 }
 
 .filterPanificadora{
+
     display: flex;
     align-items: center;
     background-color: var(--color-categoria-panificadora);
     border: none;
     padding: 12px 15px;
+
 }
 
 .filterPanificadora img{
@@ -176,6 +223,10 @@ main section nav button{
 }
 
 .filterPanificadora:hover{
+    border: 1px solid black;
+}
+
+.filterPanificadora:focus{
     border: 1px solid black;
 }
     
@@ -188,6 +239,10 @@ main section nav button{
 }
 
 .filterFrutas:hover{
+    border: 1px solid black;
+}
+
+.filterFrutas:focus{
     border: 1px solid black;
 }
 
@@ -210,6 +265,10 @@ main section nav button{
     border: 1px solid black; 
 }
 
+.filterBebidas:focus{
+    border: 1px solid black; 
+}
+
 main ul{
     width: 300px;
     display: flex;
@@ -227,6 +286,10 @@ section ul li{
 section ul li img{
     border: 2px solid var(--color-botao-pesquisa);
     border-radius: 15px;
+}
+
+section ul li img:hover{
+    border: 3px solid var(--color-effect-red);
 }
 
 section ul li .foodCategory{
@@ -279,24 +342,18 @@ section ul li div .addCart{
     height: 30px;
     color: var(--color-addcarrinho-verde);
     background-color: var(--color-background-addcarrinho);
+    background-image: url("../icons/icon-addcarrinho.png");
+    background-size: 11px;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 30px;
     border: 1.5px solid #F3EEF5;
 }
 
-.addCart img{
-    border: none;
-    width: 11px;
-    height: 11px;
-}
-
-.addCart img:hover{
-    
-    content: url("../icons/icon-carrinho.png");
-}
-
 .addCart:hover{
-
-    background: var(--color-addcarrinho-verde);
+    
+    background-image: url("../icons/icon-carrinho.png");
+    background-color: var(--color-addcarrinho-verde);
 
 }
 
@@ -462,6 +519,10 @@ aside .totalAmount{
     header form {
         width: 30%;
         height: 49px;
+    }
+
+    header form input{
+        width: 70%;
     }
 
     header img{

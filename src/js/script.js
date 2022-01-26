@@ -1,11 +1,10 @@
 //START global-variables
 import {FilterProducts} from "./ClassFilter.js";
-import {productsObjArr} from "./requisitionClass.js";
+import {productsObjArr, createdObjData} from "./requisitionClass.js";
+import {ModalProduct} from "./ModalProduct.js"
 
 const vitrineProdutos = document.querySelector("#vitrineProdutos");
 const vitrineCarrinho = document.querySelector("#vitrineCarrinho");
-/* const buttonCategorias = document.querySelectorAll("#buttonCategoria");
-const inputPesquisa = document.querySelector("input"); */
 const carrinhoVazio = document.querySelector("#cartProducts");
 const carrinhoVazioAmount = document.querySelector("#productAmount")
 const carrinhoVazioTotal = document.querySelector("#totalAmount")
@@ -16,35 +15,6 @@ const listCart = document.querySelector("#listCart")
 let addedProducts = [];
 let productAcumulator = 0;
 let productTotal = 0;
-
-
-
-
-//END global-variables
-
-//START dynamic-content-header
-
-//END dynamic-content-header
-
-//START dynamic-content-main
-
-// 
-
-
-/* class RequistionAPI {
-    
-    static async RequisitionData() {
-        
-        const apiURL = "https://kenzie-food-api.herokuapp.com/product"
-        const response = await fetch(apiURL)
-        const data = await response.json()
-
-        return data;
-    }
-
-}
-
-let productsObjArr = await RequistionAPI.RequisitionData() */
 
 class TemplatesVitrines {
 
@@ -202,74 +172,40 @@ class TemplatesVitrines {
             vitrineCarrinho.removeChild(clickedButton);
         });
     }
+    static vitrineModal(){
+        
+
+        const select = document.querySelector("#selectProduct")
+        select.innerHTML = ""
+        const optionDefault = document.createElement("option")
+        optionDefault.value= "default"
+        optionDefault.innerText = "Selecione o Produto"
+        select.appendChild(optionDefault)
+        console.log("LIMPOU E ATUALIZOU")
+        createdObjData.forEach(element =>{
+            const option = document.createElement("option")
+            option.innerText = element.nome;
+            option.id = element.id;
+            select.appendChild(option);
+        })
+    }
 }
 
-/* class FilterProducts {
-
-    static ValidacaoCategorias(button) {
-        switch (button.target.className) {
-
-            case "filterTodos":
-                return TemplatesVitrines.vitrineProdutos(productsObjArr);
-                break;
-
-            case "filterPanificadora":
-                const ListaPanificadora = productsObjArr.filter(element => {
-                    return element.categoria === "Panificadora";
-                });
-                return TemplatesVitrines.vitrineProdutos(ListaPanificadora);
-                break;
-
-            case "filterFrutas":
-                const ListaFrutas = productsObjArr.filter(element => {
-                    return element.categoria === "Frutas";
-                });
-                return TemplatesVitrines.vitrineProdutos(ListaFrutas);
-                break;
-
-            case "filterBebidas":
-                const ListaBebidas = productsObjArr.filter(element => {
-                    return element.categoria === "Bebidas";
-                });
-
-                return TemplatesVitrines.vitrineProdutos(ListaBebidas);
-                break;
-
-        }
-    }
-    static FilterCategorias() {
-
-        buttonCategorias.forEach((element) => {
-            element.addEventListener("click", this.ValidacaoCategorias)
-        });
-
-    }
-
-    static FilterInput() {
-
-        inputPesquisa.addEventListener("keyup", () => {
-
-            const valueInput = document.querySelector("input").value
-            const ProdutosPesquisados = productsObjArr.filter(element => {
-
-                return element.nome.toLowerCase().includes(valueInput.toLowerCase());
-
-            });
-
-
-            return TemplatesVitrines.vitrineProdutos(ProdutosPesquisados);
-        });
-    };
-}; */
-
-
-//END dynamic-content-main
-
 //START call-functions
+
 TemplatesVitrines.vitrineProdutos(productsObjArr)
+TemplatesVitrines.vitrineModal();
 FilterProducts.FilterInput()
 FilterProducts.FilterCategorias()
+
 //END call-functions
 
+//START call-functions ModalProduct
+ModalProduct.OpenModal();
+ModalProduct.CloseModal()
+ModalProduct.AdicionarProduto();
+
+
+//END call-functions ModalProduct
 
 export {TemplatesVitrines}

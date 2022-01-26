@@ -28,6 +28,34 @@
 
     </header>
     <main>
+        <form class="modalNone" id="ModalProduct">
+            <img src="./src/icons/icon-closeModal.png" alt="Fechar" class="ModalClose">
+                <div>
+                    <select name="" id="selectProduct">
+                        <!-- <option value="default" selected>Selecione o Produto</option> -->
+                    </select>
+                    <label for="">Nome do Produto:</label>
+                    <input type="text" placeholder="Nome do Produto" id="NameProduct">
+                </div>
+                <div>
+                    <label for="">Preço do Produto:</label>
+                    <input type="number" placeholder="Preço" id="PriceProduct">
+                </div>
+                <div>
+                    <label for="">Categoria do Produto:</label>
+                    <input type="text" placeholder="Categoria" id="CategoryProduct">
+                </div>
+                <div>
+                    <label for="">Link - Imagem do Produto:</label>
+                    <input type="text" placeholder="Link Imagem" id="ImgProduct">
+                </div>
+                <div>
+                    <label for="">Descrição do Produto:</label>
+                    <input type="text" placeholder="Descrição" id="DescriptionProduct">
+                </div>
+
+            <button class="modal-button" id="ModalButton">Enviar</button>
+        </form>
 
         <section>
             <nav>
@@ -96,7 +124,7 @@
     </main>
 
     <footer>
-        <h4 class="adminProdutos adminGreen">Adicionar Produto</h4>
+        <h4 class="adminProdutos adminGreen" id="AddProduct">Adicionar Produto</h4>
         <h4 class="adminProdutos adminYellow">Alterar Produto</h4>
         <h4 class="adminProdutos adminRed">Remover Produto</h4>
     </footer>

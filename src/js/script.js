@@ -11,7 +11,6 @@ const spanPrice = document.querySelector(".totalPrice");
 const listCart = document.querySelector("#listCart")
 
 let addedProducts = [];
-let productPrices = [];
 let productAcumulator = 0;
 let productTotal = 0;
 
@@ -91,13 +90,19 @@ class TemplatesVitrines {
 
     }
 
-    static PriceTotal(product) {
+    static PriceTotal(product,operator) {
         let price = ''
         for (let i = 3; i < product.length; i++) {
             price += product[i];
         }
-        console.log(price)
-        return productPrices.push(Number(price));
+        if(operator === "somar"){
+            console.log(price)
+            return productTotal+=Number(price);
+        }else if (operator === "subtrair"){
+            console.log(price)
+            return productTotal-=Number(price);
+        }
+        
     }
 
     static addProduct(event) {
@@ -127,13 +132,10 @@ class TemplatesVitrines {
         vitrineCarrinho.appendChild(li);
         addedProducts.push(li);
         productAcumulator++
-        TemplatesVitrines.PriceTotal(productPrice.innerText)
-        console.log(productPrices)
+        TemplatesVitrines.PriceTotal(productPrice.innerText, "somar")
+        console.log(productTotal)
 
-        const TotalPrice = productPrices.reduce((previousValue, CurrentValue) => {
-            return previousValue + CurrentValue;
-        });
-        spanPrice.innerText = TotalPrice;
+        spanPrice.innerText = `R$ ${productTotal}`;
         carrinhoVazio.className = "emptyCart";
         carrinhoVazioAmount.className = "productAmount";
         carrinhoVazioTotal.className = "totalAmount";
@@ -145,14 +147,11 @@ class TemplatesVitrines {
         console.log(buttonRemove[addedProducts.length - 1])
         buttonRemove[addedProducts.length - 1].addEventListener('click', (event) => {
             let clickedButton = event.target.closest('li');
+            let divChildren = clickedButton.children[1]
             addedProducts.splice(clickedButton, 1);
-            productPrices.splice(addedProducts.indexOf(clickedButton), 1);
-            if (productPrices.length < 0) {
-                const TotalPrice = productPrices.reduce((previousValue, CurrentValue) => {
-                    return previousValue + CurrentValue;
-                });
-            }
-            spanPrice.innerText = TotalPrice;
+            TemplatesVitrines.PriceTotal(divChildren.children[2].innerText, "subtrair")
+            
+            spanPrice.innerText = `R$ ${productTotal}`;
             productAcumulator--;
             spanProductAmount.innerText = productAcumulator;
             if (productAcumulator === 0) {

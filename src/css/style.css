@@ -142,6 +142,7 @@ header form button{
     border-radius: 30px;
     background-color: var(--color-botao-pesquisa);
     border: none;
+    cursor: pointer;
 
 }
 
@@ -149,6 +150,7 @@ header form button:hover{
     border: none;
     background-image: url("../icons/icons-searchWhite.png");
     background-color: var(--color-effect-red);
+
 }
 
 header form button img{
@@ -193,6 +195,7 @@ main section nav button{
    border: none;
    margin-right: 22px;
    padding: 0 15px;
+   cursor: pointer;
 
 }
 
@@ -273,6 +276,7 @@ main ul{
     width: 300px;
     display: flex;
     overflow-x: scroll;
+    margin: 0 auto;
 }
 
 section ul li{
@@ -361,6 +365,7 @@ aside{
     width: 300px;
     height: 405px;
     overflow-y: scroll;
+    margin: 0 auto;
 }
 
 aside .cartTitle{
@@ -536,7 +541,8 @@ aside .totalAmount{
     }
 
     section {
-        width: 60%;
+        width: 65%;
+        margin: 0 auto;
     }
 
     main {

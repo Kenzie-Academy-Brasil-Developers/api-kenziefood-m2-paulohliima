@@ -76,13 +76,11 @@ class TemplatesVitrines {
 
         if (operator === "somar") {
 
-            console.log(price)
 
             return productTotal += Number(price);
 
         } else if (operator === "subtrair") {
 
-            console.log(price)
 
             return productTotal -= Number(price);
         }
@@ -121,13 +119,12 @@ class TemplatesVitrines {
         });
 
         addedProducts.push(element);
-        console.log(addedProducts, element)
 
-        localStorage.setItem('addedProducts', JSON.stringify([...addedProducts]))
+        localStorage.setItem('addedProducts', JSON.stringify([...addedProducts]));
 
-        productAcumulator++
+        productAcumulator++;
 
-        TemplatesVitrines.PriceTotal(productPrice.innerText, "somar")
+        TemplatesVitrines.PriceTotal(productPrice.innerText, "somar");
 
         console.log(productTotal)
 
@@ -139,7 +136,7 @@ class TemplatesVitrines {
 
         carrinhoVazioTotal.className = "totalAmount";
 
-        listCart.className = "listCartActive"
+        listCart.className = "listCartActive";
 
         spanProductAmount.innerText = productAcumulator;
 
@@ -150,15 +147,17 @@ class TemplatesVitrines {
 
             let clickedButton = event.target.closest('li');
 
-            let divChildren = clickedButton.children[1]
+            let divChildren = clickedButton.children[1];
 
             addedProducts.splice(clickedButton, 1);
 
-            TemplatesVitrines.PriceTotal(divChildren.children[2].innerText, "subtrair")
+            TemplatesVitrines.PriceTotal(divChildren.children[2].innerText, "subtrair");
 
             spanPrice.innerText = `R$ ${productTotal}`;
 
             productAcumulator--;
+
+            localStorage.setItem('addedProducts', JSON.stringify([...addedProducts]));
 
             spanProductAmount.innerText = productAcumulator;
 
@@ -179,12 +178,12 @@ class TemplatesVitrines {
     static vitrineModal(arrData) {
 
 
-        const select = document.querySelector("#selectProduct")
-        select.innerHTML = ""
-        const optionDefault = document.createElement("option")
+        const select = document.querySelector("#selectProduct");
+        select.innerHTML = "";
+        const optionDefault = document.createElement("option");
         optionDefault.value = "default"
-        optionDefault.innerText = "Selecione o Produto"
-        select.appendChild(optionDefault)
+        optionDefault.innerText = "Selecione o Produto";
+        select.appendChild(optionDefault);
         arrData.forEach(element => {
             const option = document.createElement("option")
             option.innerText = element.nome;
@@ -195,7 +194,6 @@ class TemplatesVitrines {
     static localStorage() {
 
         if (ProdutosArmazenados) {
-            console.log(ProdutosArmazenados)
             ProdutosArmazenados.forEach((element) => {
 
                 const li = document.createElement("li");
@@ -218,20 +216,36 @@ class TemplatesVitrines {
                 productTotal += element.preco;
                 spanPrice.innerText = `R$ ${productTotal}`;
 
-                listCart.className = "listCartActive"
-                const buttonRemove = document.querySelectorAll('.removeCart');
+                listCart.className = "listCartActive";
+                
                 vitrineCarrinho.appendChild(li);
 
-                buttonRemove[ProdutosArmazenados.length - 1].addEventListener('click', (event) => {
+                const buttonRemove = document.querySelectorAll('.removeCart');
+                buttonRemove[buttonRemove.length -1].addEventListener('click', (event) => {
 
                     let clickedButton = event.target.closest('li');
-                    let divChildren = clickedButton.children[1]
-                    ProdutosArmazenados.splice(clickedButton, 1);
-                    TemplatesVitrines.PriceTotal(divChildren.children[2].innerText, "subtrair")
+                    let divChildren = clickedButton.children[1];
+                    TemplatesVitrines.PriceTotal(divChildren.children[2].innerText, "subtrair");
+                    addedProducts.splice(clickedButton, 1);
+                    localStorage.setItem('addedProducts', JSON.stringify([...addedProducts]));
                     productAcumulator--;
-                    productAcumulator = ProdutosArmazenados.length;
+                    productAcumulator = addedProducts.length;
                     spanProductAmount.innerText = productAcumulator;
                     spanPrice.innerText = `R$ ${productTotal}`;
+                    
+
+                    if (productAcumulator === 0) {
+
+                        carrinhoVazio.className = "emptyCartNone";
+        
+                        carrinhoVazioAmount.className = "emptyCart";
+        
+                        carrinhoVazioTotal.className = "emptyCart";
+        
+                        listCart.className = "listCart";
+                    }
+        
+                    vitrineCarrinho.removeChild(clickedButton);
                });
             });
         }

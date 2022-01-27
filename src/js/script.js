@@ -1,7 +1,7 @@
 //START global-variables
-import {FilterProducts} from "./ClassFilter.js";
-import {productsObjArr, createdObjData} from "./requisitionClass.js";
-import {ModalProduct} from "./ModalProduct.js"
+import { FilterProducts } from "./ClassFilter.js";
+import { productsObjArr, createdObjData } from "./requisitionClass.js";
+import { ModalProduct } from "./ModalProduct.js"
 
 const vitrineProdutos = document.querySelector("#vitrineProdutos");
 const vitrineCarrinho = document.querySelector("#vitrineCarrinho");
@@ -12,9 +12,10 @@ const spanProductAmount = document.querySelector(".productAcumulator");
 const spanPrice = document.querySelector(".totalPrice");
 const listCart = document.querySelector("#listCart")
 
-let addedProducts = [];
 let productAcumulator = 0;
 let productTotal = 0;
+let ProdutosArmazenados = JSON.parse(localStorage.getItem('addedProducts')) || []
+let addedProducts = [...ProdutosArmazenados];
 
 class TemplatesVitrines {
 
@@ -25,7 +26,7 @@ class TemplatesVitrines {
         array.forEach((element) => {
 
             const li = document.createElement("li")
-
+            li.id = element.id
             li.innerHTML =
 
                 `<img src=${element.imagem} alt=${element.nome}>
@@ -91,7 +92,7 @@ class TemplatesVitrines {
     static addProduct(event) {
 
         let clickedButton = event.target.closest('li');
-
+        console.log(clickedButton.id)
         let imgSrc = clickedButton.children[0].src;
 
         let productName = clickedButton.children[2];
@@ -115,7 +116,14 @@ class TemplatesVitrines {
 
         vitrineCarrinho.appendChild(li);
 
-        addedProducts.push(li);
+        let element = productsObjArr.find((element) => {
+            return element.id === Number(clickedButton.id)
+        });
+
+        addedProducts.push(element);
+        console.log(addedProducts, element)
+
+        localStorage.setItem('addedProducts', JSON.stringify([...addedProducts]))
 
         productAcumulator++
 
@@ -138,8 +146,6 @@ class TemplatesVitrines {
 
         const buttonRemove = document.querySelectorAll('.removeCart');
 
-        console.log(buttonRemove[addedProducts.length - 1])
-
         buttonRemove[addedProducts.length - 1].addEventListener('click', (event) => {
 
             let clickedButton = event.target.closest('li');
@@ -149,7 +155,7 @@ class TemplatesVitrines {
             addedProducts.splice(clickedButton, 1);
 
             TemplatesVitrines.PriceTotal(divChildren.children[2].innerText, "subtrair")
-            
+
             spanPrice.innerText = `R$ ${productTotal}`;
 
             productAcumulator--;
@@ -170,22 +176,66 @@ class TemplatesVitrines {
             vitrineCarrinho.removeChild(clickedButton);
         });
     }
-    static vitrineModal(arrData){
-        
+    static vitrineModal(arrData) {
+
 
         const select = document.querySelector("#selectProduct")
         select.innerHTML = ""
         const optionDefault = document.createElement("option")
-        optionDefault.value= "default"
+        optionDefault.value = "default"
         optionDefault.innerText = "Selecione o Produto"
         select.appendChild(optionDefault)
-        console.log("LIMPOU E ATUALIZOU")
-        arrData.forEach(element =>{
+        arrData.forEach(element => {
             const option = document.createElement("option")
             option.innerText = element.nome;
             option.id = element.id;
             select.appendChild(option);
         })
+    }
+    static localStorage() {
+
+        if (ProdutosArmazenados) {
+            console.log(ProdutosArmazenados)
+            ProdutosArmazenados.forEach((element) => {
+
+                const li = document.createElement("li");
+
+                li.innerHTML =
+                    `<img src=${element.imagem} alt="${element.nome}">
+                    <div>
+                        <h3>${element.nome}</h3>
+                        <span class="categoria">${element.categoria}</span>
+                        <span class="price">R$ ${element.preco}</span>
+                    </div>
+                <button class="removeCart"></button>
+                `
+
+                carrinhoVazio.className = "emptyCart";
+                carrinhoVazioAmount.className = "productAmount";
+                carrinhoVazioTotal.className = "totalAmount";
+                productAcumulator = ProdutosArmazenados.length;
+                spanProductAmount.innerText = productAcumulator;
+                productTotal += element.preco;
+                spanPrice.innerText = `R$ ${productTotal}`;
+
+                listCart.className = "listCartActive"
+                const buttonRemove = document.querySelectorAll('.removeCart');
+                vitrineCarrinho.appendChild(li);
+
+                buttonRemove[ProdutosArmazenados.length - 1].addEventListener('click', (event) => {
+
+                    let clickedButton = event.target.closest('li');
+                    let divChildren = clickedButton.children[1]
+                    ProdutosArmazenados.splice(clickedButton, 1);
+                    TemplatesVitrines.PriceTotal(divChildren.children[2].innerText, "subtrair")
+                    productAcumulator--;
+                    productAcumulator = ProdutosArmazenados.length;
+                    spanProductAmount.innerText = productAcumulator;
+                    spanPrice.innerText = `R$ ${productTotal}`;
+               });
+            });
+        }
+
     }
 }
 
@@ -193,8 +243,9 @@ class TemplatesVitrines {
 
 TemplatesVitrines.vitrineProdutos(productsObjArr)
 TemplatesVitrines.vitrineModal(createdObjData);
-FilterProducts.FilterInput()
-FilterProducts.FilterCategorias()
+TemplatesVitrines.localStorage();
+FilterProducts.FilterInput();
+FilterProducts.FilterCategorias();
 
 //END call-functions
 
@@ -207,4 +258,4 @@ ModalProduct.RemoverProduto();
 
 //END call-functions ModalProduct
 
-export {TemplatesVitrines}
+export { TemplatesVitrines }

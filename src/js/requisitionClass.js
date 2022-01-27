@@ -22,7 +22,6 @@ class RequistionAPI {
             },
         })
         const data = await response.json()
-        console.log(data);
         return data;
     }
     static async  PostRequisition(data) {

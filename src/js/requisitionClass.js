@@ -21,8 +21,8 @@ class RequistionAPI {
                 "Authorization": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTY0MzExOTAwOCwiZXhwIjoxNjQzOTgzMDA4LCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.aEHtFwCjMvJeMlygdctk25MRBdCWaHlvY3ChY29Xujg"
             },
         })
-        let data = await response.json()
-
+        const data = await response.json()
+        console.log(data);
         return data;
     }
     static async  PostRequisition(data) {
@@ -38,7 +38,7 @@ class RequistionAPI {
         })
 
         const result = await response.json()
-
+        alert("Produto Adicionado!")
         return result
     }
     static async PATCHRequisition(data, id) {
@@ -54,7 +54,22 @@ class RequistionAPI {
         });
 
         const result = await response.json()
+        alert("Produto Alterado!")
         return result;
+    }
+    static async DeleteRequisition(id){
+        const apiURL = `https://kenzie-food-api.herokuapp.com/my/product/${id}`
+
+        const response = await fetch(apiURL, {
+            method: "DELETE",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTY0MzExOTAwOCwiZXhwIjoxNjQzOTgzMDA4LCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.aEHtFwCjMvJeMlygdctk25MRBdCWaHlvY3ChY29Xujg"
+            },
+        });
+        let data = await response
+        alert("Produto Removido!")
+        return data;
     }
 }
 

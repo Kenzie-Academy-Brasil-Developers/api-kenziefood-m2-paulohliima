@@ -110,9 +110,7 @@ class TemplatesVitrines {
                 <span class="categoria">${productCategory.innerText}</span>
                 <span class="price">${productPrice.innerText}</span>
             </div>
-            <button class="removeCart">
-                <img src="./src/icons/icon-trash.png" alt="Icone RemoveCart">
-            </button>
+            <button class="removeCart"></button>
             `
 
         vitrineCarrinho.appendChild(li);
@@ -172,7 +170,7 @@ class TemplatesVitrines {
             vitrineCarrinho.removeChild(clickedButton);
         });
     }
-    static vitrineModal(){
+    static vitrineModal(arrData){
         
 
         const select = document.querySelector("#selectProduct")
@@ -182,7 +180,7 @@ class TemplatesVitrines {
         optionDefault.innerText = "Selecione o Produto"
         select.appendChild(optionDefault)
         console.log("LIMPOU E ATUALIZOU")
-        createdObjData.forEach(element =>{
+        arrData.forEach(element =>{
             const option = document.createElement("option")
             option.innerText = element.nome;
             option.id = element.id;
@@ -194,7 +192,7 @@ class TemplatesVitrines {
 //START call-functions
 
 TemplatesVitrines.vitrineProdutos(productsObjArr)
-TemplatesVitrines.vitrineModal();
+TemplatesVitrines.vitrineModal(createdObjData);
 FilterProducts.FilterInput()
 FilterProducts.FilterCategorias()
 
@@ -204,6 +202,7 @@ FilterProducts.FilterCategorias()
 ModalProduct.OpenModal();
 ModalProduct.CloseModal()
 ModalProduct.AdicionarProduto();
+ModalProduct.RemoverProduto();
 
 
 //END call-functions ModalProduct

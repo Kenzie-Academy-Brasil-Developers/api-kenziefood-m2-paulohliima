@@ -38,7 +38,6 @@ class RequistionAPI {
         })
 
         const result = await response.json()
-        alert("Produto Adicionado!")
         return result
     }
     static async PATCHRequisition(data, id) {
@@ -54,7 +53,6 @@ class RequistionAPI {
         });
 
         const result = await response.json()
-        alert("Produto Alterado!")
         return result;
     }
     static async DeleteRequisition(id){
@@ -68,7 +66,6 @@ class RequistionAPI {
             },
         });
         let data = await response
-        alert("Produto Removido!")
         return data;
     }
 }

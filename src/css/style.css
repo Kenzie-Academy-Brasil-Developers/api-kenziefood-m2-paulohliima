@@ -362,7 +362,7 @@ section ul li div .addCart{
     cursor: pointer;
 }
 
-.addCart:hover{
+section ul li div .addCart:hover{
     
     background-image: url("../icons/icon-carrinho.png");
     background-color: var(--color-addcarrinho-verde);
@@ -673,6 +673,7 @@ footer{
 
     header form input{
         width: 70%;
+        max-width: 320px;
     }
 
     header img{

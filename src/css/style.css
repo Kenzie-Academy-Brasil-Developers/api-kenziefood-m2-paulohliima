@@ -704,7 +704,9 @@ footer{
     }
 
     section ul li {
-        width:  33.33%;
+        width: 30.33%;
+        margin-right: 20px;
+
     }
     
     main ul {
